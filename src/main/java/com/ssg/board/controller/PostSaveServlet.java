@@ -37,7 +37,7 @@ public class PostSaveServlet extends HttpServlet {
         if (result > 0) {
             resp.sendRedirect("/posts");
         } else{
-            req.setAttribute("result", false);
+            req.setAttribute("errorMsg", "게시글 등록에 실패했습니다.");
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }

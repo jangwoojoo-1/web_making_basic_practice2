@@ -81,12 +81,54 @@
     <script>
         function insert(){
             const form = document.querySelector('form');
+
+            const title = form.title.value;
+            const content = form.content.value;
+            const pwd = form.pwd.value;
+
+            if (title.length < 2 || title.length > 200) {
+                alert('제목은 2자 이상 200자 이하로 입력해주세요.');
+                form.title.focus();
+                return;
+            }
+            if (content.length < 5) {
+                alert('내용은 5자 이상 입력해주세요.');
+                form.content.focus();
+                return;
+            }
+            if (pwd.length < 4 || pwd.length > 20) {
+                alert('비밀번호는 4자 이상 20자 이하로 입력해주세요.');
+                form.pwd.focus();
+                return;
+            }
+
             form.method = 'post';
             form.action = '/posts/save';
             form.submit();
         }
         function modify(){
             const form = document.querySelector('form');
+
+            const title = form.title.value;
+            const content = form.content.value;
+            const pwd = form.pwd.value;
+
+            if (title.length < 2 || title.length > 200) {
+                alert('제목은 2자 이상 200자 이하로 입력해주세요.');
+                form.title.focus();
+                return;
+            }
+            if (content.length < 5) {
+                alert('내용은 5자 이상 입력해주세요.');
+                form.content.focus();
+                return;
+            }
+            if (pwd.length < 4 || pwd.length > 20) {
+                alert('비밀번호는 4자 이상 20자 이하로 입력해주세요.');
+                form.pwd.focus();
+                return;
+            }
+
             form.method = 'post';
             form.action = '/posts/update';
             form.submit();
@@ -105,7 +147,7 @@
                 <tr><th>내용</th><td><textarea name="content" row="10" placeholder="내용 입력"></textarea></td></tr>
                 <tr><th>비밀번호</th><td><input type="password" name="pwd" placeholder="비밃번호 입력"></td></tr>
             </table>
-            <button onclick="insert()">글 등록</button>
+            <button type="button" onclick="insert()">글 등록</button>
         </c:if>
         <c:if test="${dto != null}">
             <table>
