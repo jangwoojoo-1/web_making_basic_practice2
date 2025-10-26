@@ -4,8 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.modelmapper.convention.MatchingStrategies;
 
-public class MapperUtil {
-    private static ModelMapper modelMapper;
+public enum MapperUtil {
+    INSTANCE;
+
+    private ModelMapper modelMapper;
 
     MapperUtil() {
         modelMapper = new ModelMapper();

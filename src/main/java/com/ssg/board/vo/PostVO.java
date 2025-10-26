@@ -1,14 +1,17 @@
-package com.ssg.board.dto;
+package com.ssg.board.vo;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDTO {
+public class PostVO {
     private Long postId;
     private String title;
     private String content;
@@ -16,5 +19,4 @@ public class PostDTO {
     private String passphrase;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    // getters/setters
 }

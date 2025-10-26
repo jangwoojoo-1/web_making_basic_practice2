@@ -6,8 +6,10 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DBUtil {
-    private static HikariDataSource ds;
+public enum DBUtil {
+    INSTANCE;
+
+    private HikariDataSource ds;
 
     DBUtil() {
         HikariConfig config = new HikariConfig();
