@@ -25,7 +25,7 @@ public class PostEditServlet extends HttpServlet {
 
         PostDTO dto = postService.getDetail(postId);
 
-        req.setAttribute("req", dto);
+        req.setAttribute("dto", dto);
         req.getRequestDispatcher("/WEB-INF/views/form.jsp").forward(req, resp);
     }
 }

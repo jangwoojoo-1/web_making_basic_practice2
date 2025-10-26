@@ -28,6 +28,6 @@ public class PostDetailServlet extends HttpServlet {
 
         PostDTO dto = postService.getDetail(postId);
         req.setAttribute("post", dto);
-        req.getRequestDispatcher("WEB-INF/views/detail.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/detail.jsp").forward(req, resp);
     }
 }

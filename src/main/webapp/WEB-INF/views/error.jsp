@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>ErrorPage</title>
 </head>
 <body>
-
+    <h1> ${errorMsg} </h1>
+    <a href="javascript:void(0)" onclick="history.back()">이전으로</a>
 </body>
 </html>

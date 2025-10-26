@@ -28,12 +28,17 @@ public class PostUpdateServlet extends HttpServlet {
         postDTO.setTitle(req.getParameter("title"));
         postDTO.setContent(req.getParameter("content"));
 
-        String passphrase = req.getParameter("passphrase");
+        String passphrase = req.getParameter("pwd");
 
         boolean result = postService.edit(postDTO, passphrase);
         if(result) {
-            resp.sendRedirect("/posts/edit?id=" + postDTO.getPostId());
+            // 수정 성공 시 상세 조회 페이지로 리다이렉트
+            resp.sendRedirect("/posts/view?id=" + postDTO.getPostId()); //
+        } else {
+            // *** 수정된 부분 ***
+            // 실패 시 error.jsp로 포워딩
+            req.setAttribute("errorMsg", "수정에 실패했습니다. 비밀번호를 확인하세요.");
+            req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
-        resp.sendRedirect("/WEB-INF/views/error.jsp");
     }
 }

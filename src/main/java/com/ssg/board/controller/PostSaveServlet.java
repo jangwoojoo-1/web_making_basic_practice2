@@ -35,7 +35,7 @@ public class PostSaveServlet extends HttpServlet {
 
         long result = postService.write(postDTO);
         if (result > 0) {
-            resp.sendRedirect("/posts/list");
+            resp.sendRedirect("/posts");
         } else{
             req.setAttribute("result", false);
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);

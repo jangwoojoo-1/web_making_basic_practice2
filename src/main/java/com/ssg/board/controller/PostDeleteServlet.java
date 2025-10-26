@@ -19,12 +19,18 @@ public class PostDeleteServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         long postId = Long.parseLong(req.getParameter("id"));
-        String passphrase = req.getParameter("passphrase");
+        String passphrase = req.getParameter("pwd");
 
         boolean result = postService.remove(postId, passphrase);
         if(result) {
-            resp.sendRedirect("/posts/list");
+            resp.sendRedirect("/posts"); // 목록 페이지로 리다이렉트
+        } else {
+            // *** 수정된 부분 ***
+            // 실패 시 error.jsp로 포워딩 (또는 리다이렉트)
+            req.setAttribute("errorMsg", "삭제에 실패했습니다. 비밀번호를 확인하세요.");
+            req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
-        resp.sendRedirect("/WEB-INF/views/error.jsp");
+        // *** 삭제된 부분 ***
+        // resp.sendRedirect("/WEB-INF/views/error.jsp"); // 이중 리다이렉트 오류
     }
 }

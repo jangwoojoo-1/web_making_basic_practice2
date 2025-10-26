@@ -25,8 +25,7 @@ public class PostDAOImpl implements PostDAO {
         ) {
             List<PostVO> list = new ArrayList<>();
             while (rs.next()) {
-                PostVO post = new PostVO();
-                post.builder()
+                PostVO post = PostVO.builder()
                         .postId(rs.getLong("post_id"))
                         .title(rs.getString("title"))
                         .content(rs.getString("content"))
@@ -60,8 +59,7 @@ public class PostDAOImpl implements PostDAO {
             pstmt.setLong(1, id);
             try(ResultSet rs = pstmt.executeQuery();) {
                 if(rs.next()) {
-                    PostVO post = new PostVO();
-                    post.builder()
+                    PostVO post = PostVO.builder()
                             .postId(rs.getLong("post_id"))
                             .title(rs.getString("title"))
                             .content(rs.getString("content"))
@@ -113,8 +111,7 @@ public class PostDAOImpl implements PostDAO {
         ) {
             pstmt.setString(1, post.getTitle());
             pstmt.setString(2, post.getContent());
-            pstmt.setString(3, post.getWriter());
-            pstmt.setString(4, post.getPassphrase());
+            pstmt.setLong(3, post.getPostId());
 
             long result = pstmt.executeUpdate();
             if(result > 0) {
@@ -153,7 +150,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public boolean checkPassphrase(long id, String passphrase) {
-        String sql = "select passpharse from board_post where post_id=?";
+        String sql = "select passphrase from board_post where post_id=?";
 
         // try resource 구조로 연결 자동으로 닫기
         try(Connection conn= DBUtil.INSTANCE.getConnection();

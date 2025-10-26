@@ -16,7 +16,7 @@ public class PostNewFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("PostNewFormServlet doGet() 메서드 호출");
 
-        req.setAttribute("req", null);
+        req.setAttribute("dto", null);
         req.getRequestDispatcher("/WEB-INF/views/form.jsp").forward(req, resp);
     }
 }
