@@ -4,7 +4,10 @@ import com.ssg.board.dto.PostDTO;
 import com.ssg.board.util.DBUtil;
 import com.ssg.board.vo.PostVO;
 import lombok.Cleanup;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,14 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class PostDAOImpl implements PostDAO {
+
+    @Autowired
+    private DataSource dataSource;
+
     // 데이터베이스에서 게시글 목록 가져오는 메서드
     @Override
     public List<PostVO> findAll() {
         // sql 문
         String sql = "select * from board_post";
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn= dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
         ) {
@@ -53,7 +61,7 @@ public class PostDAOImpl implements PostDAO {
     public Optional<PostVO> findById(long id) {
         String sql = "select * from board_post where post_id=?";
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn= dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
         ) {
             pstmt.setLong(1, id);
@@ -84,7 +92,7 @@ public class PostDAOImpl implements PostDAO {
         // post_id, created_at, updated_at은 자동
         String sql = "insert into board_post(title, content, writer,passphrase) values(?,?,?,?)";
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn= dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
         ) {
             pstmt.setString(1, post.getTitle());
@@ -106,7 +114,7 @@ public class PostDAOImpl implements PostDAO {
         // post_id, created_at, updated_at은 자동
         String sql = "update board_post set title=?,content=? where post_id=?";
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn = dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
         ) {
             pstmt.setString(1, post.getTitle());
@@ -131,7 +139,7 @@ public class PostDAOImpl implements PostDAO {
         // post_id, created_at, updated_at은 자동
         String sql = "delete from board_post where post_id=?";
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn = dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
         ) {
             pstmt.setLong(1, id);
@@ -153,7 +161,7 @@ public class PostDAOImpl implements PostDAO {
         String sql = "select passphrase from board_post where post_id=?";
 
         // try resource 구조로 연결 자동으로 닫기
-        try(Connection conn= DBUtil.INSTANCE.getConnection();
+        try(Connection conn = dataSource.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
         ) {
             pstmt.setLong(1, id);

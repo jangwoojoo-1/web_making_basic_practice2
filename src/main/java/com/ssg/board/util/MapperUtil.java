@@ -3,7 +3,9 @@ package com.ssg.board.util;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public enum MapperUtil {
     INSTANCE;
 
