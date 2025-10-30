@@ -44,50 +44,38 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Todo Modify
+                        게시글 수정
                     </div>
                     <div class="card-body">
-                        <form action="/todo/modify" method="post">
+                        <form action="/board/modify" method="post">
 
 
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text">TNO</span>
-                                <input type="text" name="tno" class="form-control"
-                                       value=<c:out value="${dto.tno}"></c:out> readonly>
+                                <span class="input-group-text">글번호</span>
+                                <input type="text" name="postId" class="form-control"
+                                       value=<c:out value="${dto.postId}"></c:out> readonly>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Title</span>
+                                <span class="input-group-text">제목</span>
                                 <input type="text" name="title" class="form-control"
                                        value=<c:out value="${dto.title}"></c:out> >
                             </div>
-
                             <div class="input-group mb-3">
-                                <span class="input-group-text">DueDate</span>
-                                <input type="date" name="dueDate" class="form-control"
-                                       value=<c:out value="${dto.dueDate}"></c:out> >
-
+                                <span class="input-group-text">내용</span>
+                                <textarea name="content" class="form-control"><c:out value="${dto.content}"></c:out></textarea>
                             </div>
-
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Writer</span>
+                                <span class="input-group-text">작성자</span>
                                 <input type="text" name="writer" class="form-control"
                                        value=<c:out value="${dto.writer}"></c:out> readonly>
 
                             </div>
-
-                            <div class="form-check">
-                                <label class="form-check-label" >
-                                    Finished &nbsp;
-                                </label>
-                                <input class="form-check-input" type="checkbox" name="finished" ${dto.finished?"checked":""} >
-                            </div>
-
                             <div class="my-4">
                                 <div class="float-end">
                                     <button type="button" class="btn btn-danger">Remove</button>
                                     <button type="button" class="btn btn-primary">Modify</button>
-                                    <button type="button" class="btn btn-secondary">List</button>
+                                    <button type="button" class="btn btn-secondary">list</button>
                                 </div>
                             </div>
                         </form>
@@ -115,7 +103,7 @@
                             e.preventDefault()
                             e.stopPropagation()
 
-                            formObj.action =`/todo/remove`
+                            formObj.action =`/board/remove`
                             formObj.method ="post"
 
                             formObj.submit()
@@ -127,7 +115,7 @@
                             e.preventDefault()
                             e.stopPropagation()
 
-                            formObj.action ="/todo/modify"
+                            formObj.action ="/board/modify"
                             formObj.method ="post"
 
                             formObj.submit()
@@ -141,7 +129,7 @@
                             e.preventDefault()
                             e.stopPropagation()
 
-                            self.location= `/todo/list`
+                            self.location= `/board/list`
 
                         },false);
 

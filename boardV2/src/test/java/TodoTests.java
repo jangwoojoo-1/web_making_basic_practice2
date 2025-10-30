@@ -1,4 +1,4 @@
-import com.ssg.todoservice.mapper.TodoMapper;
+import com.ssg.board.mapper.BoardMapper;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class TodoTests {
     @Autowired(required = false)
-    private TodoMapper todoMapper;
+    private BoardMapper todoMapper;
 
     @Test
     public void testTime(){

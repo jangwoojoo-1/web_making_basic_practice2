@@ -1,4 +1,4 @@
-package com.ssg.todoservice.dto;
+package com.ssg.board.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,12 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodoDTO {
-    private Long tno;
+public class BoardDTO {
+    private Long postId;
     private String title;
-    private LocalDate dueDate;
+    private String content;
     private String writer;
-    private boolean finished;
+    private String passphrase;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 }

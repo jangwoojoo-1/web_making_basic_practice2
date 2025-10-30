@@ -1,4 +1,4 @@
-package com.ssg.todoservice.controller.formatter;
+package com.ssg.board.controller.formatter;
 
 import org.springframework.format.Formatter;
 

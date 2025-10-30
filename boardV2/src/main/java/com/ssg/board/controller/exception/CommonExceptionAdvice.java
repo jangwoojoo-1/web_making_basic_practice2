@@ -1,4 +1,4 @@
-package com.ssg.todoservice.controller.exception;
+package com.ssg.board.controller.exception;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -22,5 +22,11 @@ public class CommonExceptionAdvice {
     @ExceptionHandler(value = NoHandlerFoundException.class)
     public String notFound(){
         return "custom404";
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(value = Exception.class)
+    public String ServerError(){
+        return "custom500";
     }
 }

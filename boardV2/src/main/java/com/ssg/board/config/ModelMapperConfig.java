@@ -1,4 +1,4 @@
-package com.ssg.todoservice.config;
+package com.ssg.board.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

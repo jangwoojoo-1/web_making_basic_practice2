@@ -44,28 +44,26 @@
       <div class="col">
         <div class="card">
           <div class="card-header">
-            Featured
+            게시판
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">게시글 목록</h5>
             <table class="table">
               <thead>
               <tr>
-                <th scope="col">Tno</th>
-                <th scope="col">Title</th>
-                <th scope="col">Writer</th>
-                <th scope="col">DueDate</th>
-                <th scope="col">Finished</th>
+                <th scope="col">글번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
               </tr>
               </thead>
               <tbody>
               <c:forEach items="${dtoList}" var="dto">
                 <tr>
-                  <th scope="row"><c:out value="${dto.tno}"/></th>
-                  <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out value="${dto.title}"/></a></td>
+                  <th scope="row"><c:out value="${dto.postId}"/></th>
+                  <td><a href="/board/read?postId=${dto.postId}" class="text-decoration-none"><c:out value="${dto.title}"/></a></td>
                   <td><c:out value="${dto.writer}"/></td>
-                  <td><c:out value="${dto.dueDate}"/></td>
-                  <td><c:out value="${dto.finished}"/></td>
+                  <td><c:out value="${dto.updatedAt}"/></td>
                 </tr>
               </c:forEach>
               </tbody>
@@ -94,7 +92,7 @@
 </div>
 <script>
   document.querySelector(".btn-primary").addEventListener("click",function (e) {
-    self.location = "/todo/register";
+    self.location = "/board/register";
   },false)
 </script>
 </body>

@@ -44,22 +44,20 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Featured
+                        게시글 작성
                     </div>
                     <div class="card-body">
-                        <form action="/todo/register" method="post">
+                        <form action="/board/register" method="post">
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Title</span>
+                                <span class="input-group-text">제목</span>
                                 <input type="text" name="title" class="form-control" placeholder="Title">
                             </div>
-
                             <div class="input-group mb-3">
-                                <span class="input-group-text">DueDate</span>
-                                <input type="date" name="dueDate" class="form-control" placeholder="Writer">
+                                <span class="input-group-text">내용</span>
+                                <textarea name="content" class="form-control" placeholder="Title"></textarea>
                             </div>
-
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Writer</span>
+                                <span class="input-group-text">작성자</span>
                                 <input type="text" name="writer" class="form-control" placeholder="Writer">
                             </div>
 
@@ -89,7 +87,7 @@
                                 e.preventDefault()
                                 e.stopPropagation()
 
-                                self.location= `/todo/list`
+                                self.location= `/board/list`
 
                             },false);
 

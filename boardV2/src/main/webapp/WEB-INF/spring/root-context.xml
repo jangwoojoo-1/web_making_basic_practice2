@@ -16,7 +16,7 @@
     <!--       <bean class="com.ssg.springwebmvc.sample.SampleService"></bean>-->
     <!--       <bean class="com.ssg.springwebmvc.sample.Chef"></bean>-->
     <!--       <bean class="com.ssg.springwebmvc.sample.Restaurant"></bean>-->
-    <context:component-scan base-package="com.ssg.todoservice"/>
+    <context:component-scan base-package="com.ssg.board"/>
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
@@ -45,14 +45,14 @@
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <!--    매퍼인터페이스 등록-->
-    <mybatis:scan base-package="com.ssg.todoservice.mapper"></mybatis:scan>
+    <mybatis:scan base-package="com.ssg.board.mapper"></mybatis:scan>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--        mappers 폴더밑에 폴더가 있어도 상관없고 mappers/**/  *.xml 은 이름에 상관없는 xml 파일-->
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
     </bean>
 
-    <context:component-scan base-package="com.ssg.todoservice.config"/>
-    <context:component-scan base-package="com.ssg.todoservice.service"/>
+    <context:component-scan base-package="com.ssg.board.config"/>
+    <context:component-scan base-package="com.ssg.board.service"/>
 </beans>
 
